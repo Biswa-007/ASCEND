@@ -1,4 +1,4 @@
-# 🚀 Ascend — From Repository to Production
+# 🚀 Ascend — A Modern PaaS for Developers
 
 ## The Vision
 
@@ -36,36 +36,7 @@ The user simply clicks **Deploy**.
 
 ---
 
-## MVP Goal (Week 1)
-
-User provides a GitHub URL. Ascend:
-
-```
-Clone repository
-↓
-Detect runtime (or use existing Dockerfile)
-↓
-Build Docker image
-↓
-Allocate port
-↓
-Start container (with resource limits)
-↓
-Stream logs
-↓
-Return live URL
-```
-
-Output:
-
-```
-Status: Running
-URL: http://localhost:5001
-```
-
----
-
-## Core Features (MVP)
+## Core Features 
 
 ### Authentication
 
@@ -91,7 +62,7 @@ User clicks **Deploy**. Ascend:
 2. Worker picks up job: git clone → detect runtime → docker build → docker run
 3. Status tracked in PostgreSQL
 
-### Runtime Detection (NEW — was missing from original spec)
+### Runtime Detection 
 
 Before building, the worker checks:
 
@@ -387,65 +358,50 @@ Status: Running   URL: http://localhost:{port}
 ```
 
 ---
+## Current Features
 
-## Version Roadmap
+Ascend currently supports:
 
-### V1 — Week 1 (Build now)
-
-- ✅ JWT authentication (register, login, logout)
-- ✅ Project creation with GitHub URL
-- ✅ Git clone via GitPython
-- ✅ Runtime detection (Dockerfile or auto-inject)
-- ✅ Docker build + run via Python SDK
-- ✅ Port registry — no deployment collisions
-- ✅ Container resource limits (memory + CPU)
-- ✅ Deployment status tracking in PostgreSQL
-- ✅ Build logs via deployment_logs table
-- ✅ Dashboard with live status
-
-### V2 — 1–2 Months
-
-- GitHub webhook → auto-deploy on `git push`
-- Deployment history per project
-- Restart, stop, delete deployments
-- Streaming log endpoint (`GET /logs?since=seq`)
-- Environment variable injection per deployment
-- Celery + Redis job queue (replaces asyncio.Queue)
-- Refresh token flow (httpOnly cookie)
-
-### V3 — 3–4 Months
-
-- Kubernetes backend — replace `docker run` with `kubectl apply`
-- Auto-generate Deployment + Service + Ingress manifests
-- Namespace isolation per user
-- Horizontal pod autoscaling
-
-### V4 — 5–6 Months
-
-- Prometheus metrics scraping per container
-- Grafana dashboards (CPU, RAM, disk, network)
-- Alert rules — notify on crash or high CPU
-
-### V5 — Production
-
-- Custom domains + automatic TLS (Let's Encrypt)
-- Secrets manager — encrypted env vars at rest
-- One-click rollback to any prior image
-- Team accounts + per-project RBAC
-- Usage-based billing
+* User authentication (register/login with JWT)
+* Project creation using GitHub repository URLs
+* Automated repository cloning
+* Runtime detection (Dockerfile / Node / Python / Static)
+* Docker image build and container deployment
+* Dynamic host port allocation
+* Deployment status tracking
+* Live deployment logs
+* Deployment dashboard with status monitoring
 
 ---
 
-## What This Project Teaches
+## Future Improvements
 
-- Docker (build, run, SDK, resource limits)
-- Linux fundamentals and networking
-- Reverse proxies and port management
-- CI/CD pipeline design
-- PostgreSQL and relational schema design
-- Async job processing
-- Kubernetes (V3+)
-- Observability with Prometheus + Grafana
-- System design at scale
+Planned improvements for Ascend include:
 
-This aligns directly with a **Cloud/DevOps Engineering** career path and is a project you can demo within a week.
+* GitHub webhook integration for auto-deployments
+* Deployment restart / rollback support
+* Environment variable management
+* Real-time log streaming with WebSockets
+* Kubernetes-based orchestration
+* Custom domains and HTTPS
+* Metrics and monitoring dashboards
+* Usage analytics and billing
+* Team collaboration features
+
+Ascend is being designed with scalability in mind, evolving from a local PaaS prototype into a more production-ready deployment platform.
+
+---
+
+## What I Built With Ascend
+
+Ascend helped me gain practical experience in:
+
+* Containerization with Docker
+* Backend engineering with FastAPI
+* PostgreSQL schema design
+* Asynchronous job processing
+* Deployment orchestration
+* Infrastructure design
+* CI/CD workflow architecture
+
+This project reflects my interest in backend engineering, DevOps, cloud infrastructure, and distributed systems.
