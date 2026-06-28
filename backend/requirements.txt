@@ -1,0 +1,35 @@
+# =============================================================================
+# Ascend Backend — Python Dependencies
+# =============================================================================
+
+# Web framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Database (async)
+sqlalchemy==2.0.23
+alembic==1.12.1
+asyncpg==0.29.0         # Async PostgreSQL driver (used by SQLAlchemy)
+
+# Pydantic (data validation)
+pydantic==2.5.0
+pydantic-settings==2.1.0
+email-validator==2.1.0  # Required for EmailStr
+
+# Authentication
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Multipart (for form data support)
+python-multipart==0.0.6
+
+# Deployment worker
+gitpython==3.1.43        # Git clone via Repo.clone_from()
+docker==7.1.0            # Docker SDK — build images, run containers
+
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.23.2
+httpx==0.25.1
+aiosqlite==0.19.0       # SQLite async driver for test fixtures

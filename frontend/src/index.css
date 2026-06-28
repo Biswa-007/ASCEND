@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --scrollbar-track: #111827;
+    --scrollbar-thumb: #374151;
+    --scrollbar-thumb-hover: #4b5563;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gray-950 text-gray-100 font-sans;
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar — webkit */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+}
+
+@layer components {
+  /* Log viewer monospace area */
+  .log-viewer {
+    @apply font-mono text-sm leading-relaxed;
+    background: #0d1117;
+  }
+
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-gray-900/60 backdrop-blur-sm border border-gray-800/50;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-400 to-violet-400 bg-clip-text text-transparent;
+  }
+
+  /* Shine border on hover */
+  .shine-border {
+    @apply border border-transparent transition-colors duration-200;
+  }
+  .shine-border:hover {
+    @apply border-brand-500/40;
+  }
+}
+
+@layer utilities {
+  /* Truncate at N lines */
+  .line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; }
+  .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+}
